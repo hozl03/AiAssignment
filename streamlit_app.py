@@ -163,7 +163,7 @@ with st.sidebar:
                'yearRemodAdd': YearRemodAdd
                'totalBasmtSF': TotalBsmtSF
                'totalRmsAbvGrd': TotRmsAbvGrd
-               'floorSF': 1stFlrSF
+               'floorSF': FirstFlrSF
                'grLiveArea': GrLivArea
                'fullBath': FullBath
                'kitchenQual': KitchenQual
