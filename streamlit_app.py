@@ -201,7 +201,7 @@ with st.sidebar:
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
     input_df = pd.DataFrame(data, index=[0])
-    input_house = pd.concat([input_df, df_drop], axis=0)
+    input_house = pd.concat([input_df, X], axis=0)
 
 st.write("Input DataFrame:")
 st.write(input_df)
