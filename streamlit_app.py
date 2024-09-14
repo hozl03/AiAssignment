@@ -43,6 +43,7 @@ with st.expander('Data Visualization'):
 
 # Input
 with st.sidebar:
+
     st.header('Input features')
     msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
                                       'Residential High Density','Residential Low Density','Residential Low Density Park ',
@@ -62,6 +63,12 @@ with st.sidebar:
     # Correctly indented date input
     yearBuilt = st.date_input("Original construction date", datetime.date(2019, 7, 6))
     st.write("The original construction date is: ", yearBuilt)
+           
+    yearRemodAdd = st.date_input("Remodel date", datetime.date(2019, 7, 6))
+    st.write("The remodel date date is: ", yearBuilt)
+
+    totalBasmtSF = st.slider("Total square feet of basement area", 0, 10000, 500)
+    st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
 
 
 
