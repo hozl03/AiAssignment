@@ -205,31 +205,28 @@ with st.sidebar:
            'GarageCars': garageCars,  # Use garageCars from slider
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
-    input_df = pd.DataFrame(data, index=[0])
-    input_house = pd.concat([input_df, df_filtered], axis=0)
+# Ensure input_df has the same structure as df_filtered (used in training)
+input_df = pd.DataFrame(data, index=[0])
 
+# Concatenate the new input data with the filtered training data to align columns
+input_house = pd.concat([input_df, df_filtered.drop('SalePrice', axis=1)], axis=0)
 
-with st.expander('Input Data'):
-           st.write('**New Data**')
-           input_df
-           st.write('**Combined Data**')
-           input_house
+# Select the first row, as this is the one you want to predict
+input_house = input_house[:1]  # Keep only the input row for prediction
 
-
-# Model selection
+# Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
 # Making prediction
 if model_choice == 'Random Forest':
-    prediction = loaded_random_forest.predict(input_df)
+    prediction = loaded_random_forest.predict(input_house)
 elif model_choice == 'SVR':
-    prediction = loaded_svr.predict(input_df)
+    prediction = loaded_svr.predict(input_house)
 else:
-    prediction = loaded_lin_reg.predict(input_df)
+    prediction = loaded_lin_reg.predict(input_house)
 
 # Display Prediction
 st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
-
 
 
 
