@@ -19,6 +19,45 @@ msZoning_mapping = {
     'Residential Medium Density': 'RM'
 }
 
+utility_mapping = {
+    'All Public Utilities': 'AllPub',
+    'Electricity, Gas, and Water (Septic Tank)': 'NoSewr',
+    'Electricity and Gas Only': 'NoSeWa',
+    'Electricity Only': 'ELO'
+}
+
+landSlope_mapping = {
+    'Gentle slope': 'Gtl',
+    'Moderate Slope': 'Mod',
+    'Severe Slope': 'Sev'
+}
+
+buildingType_mapping = {
+    'Single-family Detached': '1Fam',
+    'Two-family Conversion': '2FmCon',
+    'Duplex': 'Duplx',
+    'Townhouse End Unit': 'TwnhsE',
+    'Townhouse Inside Unit': 'TwnhsI'
+}
+
+kitchenQual_mapping = {
+    'Excellent': 'Ex',
+    'Good': 'Gd',
+    'Average': 'TA',
+    'Fair': 'Fa',
+    'Poor': 'Po'
+}
+
+saleCondition_mapping = {
+    'Normal Sale': 'Normal',
+    'Abnormal Sale': 'Abnorml',
+    'Adjoining Land Purchase': 'AdjLand',
+    'Allocation': 'Alloca',
+    'Family': 'Family',
+    'Partial': 'Partial'
+}
+
+
 st.title('House Price Prediction')
 
 st.write('This is an app that builds a house price prediction machine learning model')
@@ -68,13 +107,20 @@ with st.sidebar:
     st.write("Zoning code selected is: ", msZoning_code)
 
     
-    utility = st.selectbox('Utility', ('Electricity, Gas, and Water', 'Electricity and Gas Only', 'Electricity only',
-                                      'All Public Utilities'))
-    
-    landSlope = st.selectbox('Land Slope', ('Gentle slope', 'Moderate Slope', 'Severe Slope'))
+    # Utility input with mapping
+    utility = st.selectbox('Utility', list(utility_mapping.keys()))
+    utility_code = utility_mapping[utility]
+    st.write("Utility code selected is: ", utility_code)
 
-    buildingType = st.selectbox('Building Type', ('Single-family Detached', 'Two-family Conversion',
-                                                  'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
+    # Land Slope input with mapping
+    landSlope = st.selectbox('Land Slope', list(landSlope_mapping.keys()))
+    landSlope_code = landSlope_mapping[landSlope]
+    st.write("Land Slope code selected is: ", landSlope_code)
+
+    # Building Type input with mapping
+    buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
+    buildingType_code = buildingType_mapping[buildingType]
+    st.write("Building Type code selected is: ", buildingType_code)
            
     overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
     st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
@@ -107,9 +153,10 @@ with st.sidebar:
     garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
     st.write("Size of garage in car capacity is : ", grLiveArea)
 
-    saleCondition = st.selectbox('Condition of Sale', ('Normal Sale','Abnormal Sale','Adjoining Land Purchase',
-                                                      'Allocation','Family','Partial'))
-
+    # Sale Condition input with mapping
+    saleCondition = st.selectbox('Condition of Sale', list(saleCondition_mapping.keys()))
+    saleCondition_code = saleCondition_mapping[saleCondition]
+    st.write("Sale Condition code selected is: ", saleCondition_code)
 
 
 
