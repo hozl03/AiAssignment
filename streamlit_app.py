@@ -52,7 +52,8 @@ with st.sidebar:
     buildingType = st.selectbox('Building Type', ('Single-family Detached', 'Two-family Conversion',
                                                   'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
     
-
+    overallQuality = st.slider("Rates the overall material and finish of the house", 0, 10, 5)
+    st.write("The overall material and finish of the house is ", overallQuality)
 
 
 
