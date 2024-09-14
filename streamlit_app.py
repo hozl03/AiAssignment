@@ -6,6 +6,10 @@ import datetime
 
 import joblib
 
+loaded_random_forest = joblib.load('random_forest_model.joblib')
+loaded_svr = joblib.load('svr_model.joblib')
+loaded_lin_reg = joblib.load('linear_regression_model.joblib')
+
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
 
@@ -212,11 +216,19 @@ with st.expander('Input Data'):
            input_house
 
 
-# Display Prediction
-st.write(f'Predicted House Price: ${prediction[0]:,.2f}')
+# Model selection
+model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
-#Display predicted price
-st.subheader('Predicted Price')
+# Making prediction
+if model_choice == 'Random Forest':
+    prediction = loaded_random_forest.predict(input_df)
+elif model_choice == 'SVR':
+    prediction = loaded_svr.predict(input_df)
+else:
+    prediction = loaded_lin_reg.predict(input_df)
+
+# Display Prediction
+st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 
 
 
