@@ -44,6 +44,15 @@ with st.sidebar:
                                       'Residential High Density','Residential Low Density','Residential Low Density Park ',
                                       'Residential Medium Density'))
     
+    utility = st.selectbox('Utility', ('Electricity, Gas, and Water', 'Electricity and Gas Only', 'Electricity only',
+                                      'All Public Utilities'))
+    
+    landSlope = st.selectbox('Land Slope', ('Gentle slope', 'Moderate Slope', 'Severe Slope'))
+
+    buildingType = st.selectbox('Building Type', ('Single-family Detached', 'Two-family Conversion',
+                                                  'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
+    
+
 
 
 
