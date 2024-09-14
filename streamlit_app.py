@@ -66,6 +66,7 @@ st.write('This is an app that builds a house price prediction machine learning m
 with st.expander('Data'):
     st.write('**Raw data**')
     df = pd.read_csv('train.csv')
+    df_drop = df.drop('id',axis=1)
     st.write(df)
 
     st.write('**Statistical Summary of Dataset**')
@@ -197,7 +198,7 @@ with st.sidebar:
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
     input_df = pd.DataFrame(data, index=[0])
-    input_house = pd.concat([input_df, df], axis=0)
+    input_house = pd.concat([input_df, df_drop], axis=0)
 
 st.write("Input DataFrame:")
 st.write(input_df)
