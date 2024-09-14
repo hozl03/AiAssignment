@@ -180,7 +180,7 @@ with st.sidebar:
 st.write("Input DataFrame:")
 st.write(input_df)
 
-with st.expander('Input Data')
+with st.expander('Input Data'):
            st.write('**New Data**')
            input_df
            st.write('**Combined Data**')
