@@ -92,7 +92,6 @@ with st.expander('Data'):
     df_filtered = df[important_cols]
     st.write("**Filtered Data with Important Columns**")
     st.write(df_filtered)
-    st.write(df_filtered.info())  # Displays data types and non-null counts
 
 
 
@@ -201,10 +200,8 @@ with st.sidebar:
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
     input_df = pd.DataFrame(data, index=[0])
-    input_house = pd.concat([input_df, X], axis=0)
+    input_house = pd.concat([input_df, df_filtered], axis=0)
 
-st.write("Input DataFrame:")
-st.write(input_df)
 
 with st.expander('Input Data'):
            st.write('**New Data**')
