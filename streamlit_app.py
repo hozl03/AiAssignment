@@ -266,12 +266,12 @@ st.write(input_df)
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
 try:
-if model_choice == 'Random Forest':
- prediction = loaded_random_forest.predict(input_df)
-elif model_choice == 'SVR':
- prediction = loaded_svr.predict(input_df)
-else:
- prediction = loaded_lin_reg.predict(input_df)
+           if model_choice == 'Random Forest':
+            prediction = loaded_random_forest.predict(input_df)
+           elif model_choice == 'SVR':
+            prediction = loaded_svr.predict(input_df)
+           else:
+            prediction = loaded_lin_reg.predict(input_df)
 
 # Display Prediction
 st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
