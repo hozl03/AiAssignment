@@ -214,6 +214,7 @@ with st.sidebar:
 #            st.write('**Combined Data**')
 #            input_house
 
+
 # Ensure input_df has the same structure as df_filtered (used in training)
 input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
@@ -222,6 +223,11 @@ st.write(input_df)
 input_df = input_df[:1]  # Keep only the input row for prediction
 
 input_df = pd.get_dummies(input_df, columns=cat_cols)
+
+# Ensure input_df has the same structure as df_filtered (used in training)
+input_df = pd.get_dummies(input_df, columns=cat_cols)
+input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
+input_df = input_df.fillna(0)  # Fill missing values
 
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
