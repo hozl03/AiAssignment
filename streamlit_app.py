@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import datetime
 
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
@@ -42,22 +43,24 @@ with st.expander('Data Visualization'):
 
 # Input
 with st.sidebar:
-    st.header('Input features')
-    msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
-                                      'Residential High Density','Residential Low Density','Residential Low Density Park ',
-                                      'Residential Medium Density'))
-    
-    utility = st.selectbox('Utility', ('Electricity, Gas, and Water', 'Electricity and Gas Only', 'Electricity only',
-                                      'All Public Utilities'))
-    
-    landSlope = st.selectbox('Land Slope', ('Gentle slope', 'Moderate Slope', 'Severe Slope'))
+               st.header('Input features')
+               msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
+                                                 'Residential High Density','Residential Low Density','Residential Low Density Park ',
+                                                 'Residential Medium Density'))
+               
+               utility = st.selectbox('Utility', ('Electricity, Gas, and Water', 'Electricity and Gas Only', 'Electricity only',
+                                                 'All Public Utilities'))
+               
+               landSlope = st.selectbox('Land Slope', ('Gentle slope', 'Moderate Slope', 'Severe Slope'))
+           
+               buildingType = st.selectbox('Building Type', ('Single-family Detached', 'Two-family Conversion',
+                                                             'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
+                      
+               overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
+               st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
-    buildingType = st.selectbox('Building Type', ('Single-family Detached', 'Two-family Conversion',
-                                                  'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
-    
-    overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
-    st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
-
+           d = st.date_input("When's your birthday", datetime.date(2019, 7, 6))
+           st.write("Your birthday is:", d)
 
 
 
