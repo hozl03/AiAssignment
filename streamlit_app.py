@@ -69,7 +69,7 @@ with st.expander('Data'):
     st.write(df)
 
     st.write('**X**')
-    df_drop = df.drop('id',axis=1)
+    df_drop = df.drop('Id',axis=1)
     st.write(X)
            
     st.write('**Statistical Summary of Dataset**')
