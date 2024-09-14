@@ -230,15 +230,15 @@ input_data[:1]  # Keep only the input row for prediction
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
-# Making prediction
-if model_choice == 'Random Forest':
-    prediction = loaded_random_forest.predict(input_df)
-elif model_choice == 'SVR':
-    prediction = loaded_svr.predict(input_df)
-else:
-    prediction = loaded_lin_reg.predict(input_df)
+# # Making prediction
+# if model_choice == 'Random Forest':
+#     prediction = loaded_random_forest.predict(input_df)
+# elif model_choice == 'SVR':
+#     prediction = loaded_svr.predict(input_df)
+# else:
+#     prediction = loaded_lin_reg.predict(input_df)
 
-# Display Prediction
-st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
+# # Display Prediction
+# st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 
 
