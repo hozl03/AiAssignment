@@ -66,7 +66,6 @@ st.write('This is an app that builds a house price prediction machine learning m
 with st.expander('Data'):
     st.write('**Raw data**')
     df = pd.read_csv('train.csv')
-    df_drop = df.drop('id',axis=1)
     st.write(df)
 
     st.write('**Statistical Summary of Dataset**')
