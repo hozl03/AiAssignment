@@ -73,10 +73,6 @@ with st.expander('Data'):
     st.write('**Raw data**')
     df = pd.read_csv('train.csv')
     st.write(df)
-
-    st.write('**X**')
-    X = df.drop('Id',axis=1)
-    st.write(X)
            
     st.write('**Statistical Summary of Dataset**')
     summary = df.describe().T
@@ -98,7 +94,6 @@ with st.expander('Data'):
     df_filtered = df[important_cols]
     st.write("**Filtered Data with Important Columns**")
     st.write(df_filtered)
-
 
 
 with st.expander('Data Visualization'):
@@ -205,14 +200,26 @@ with st.sidebar:
            'GarageCars': garageCars,  # Use garageCars from slider
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
-# Ensure input_df has the same structure as df_filtered (used in training)
-input_df = pd.DataFrame(data, index=[0])
+    input_df = pd.DataFrame(data, index=[0])
+    input_house = pd.concat([input_df, df], axis=0)
 
-# Concatenate the new input data with the filtered training data to align columns
-input_house = pd.concat([input_df, df_filtered.drop(['SalePrice', 'GarageArea'], axis=1)], axis=0)
+st.write("Input DataFrame:")
+st.write(input_df)
 
-# Select the first row, as this is the one you want to predict
-input_house = input_house[:1]  # Keep only the input row for prediction
+with st.expander('Input Data'):
+           st.write('**New Data**')
+           input_df
+           st.write('**Combined Data**')
+           input_house
+
+# # Ensure input_df has the same structure as df_filtered (used in training)
+# input_df = pd.DataFrame(data, index=[0])
+
+# # Concatenate the new input data with the filtered training data to align columns
+# input_house = pd.concat([input_df, df_filtered.drop(['SalePrice', 'GarageArea'], axis=1)], axis=0)
+
+# # Select the first row, as this is the one you want to predict
+# input_house = input_house[:1]  # Keep only the input row for prediction
 
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
