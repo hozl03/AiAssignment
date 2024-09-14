@@ -17,15 +17,8 @@ with st.expander('Data'):
     summary = df.describe().T
     st.write(summary)
 
-with st.expander('Wai Kian is gay'):
-# # Data Visualization
-# with st.expander('Data Visualization'):
-#     st.write('**Scatter Plot**')
-#     st.scatter_chart(data=df, x='OverallQual', y='SalePrice')  # Modify the x and y axis as per your dataset
+    st.write('**Raw data**')
 
-#     st.write('**Correlation Heatmap**')
-#     # Generate heatmap
-#     fig, ax = plt.subplots(figsize=(10, 8))
-#     sns.heatmap(df.corr(), cmap="RdBu", ax=ax)
-#     ax.set_title("Correlations Between Variables", size=15)
-#     st.pyplot(fig)
+
+
+
