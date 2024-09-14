@@ -7,6 +7,18 @@ import datetime
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
 
+# Mapping for MSZoning
+msZoning_mapping = {
+    'Agriculture': 'A',
+    'Commercial': 'C',
+    'Floating Village Residential': 'FV',
+    'Industrial': 'I',
+    'Residential High Density': 'RH',
+    'Residential Low Density': 'RL',
+    'Residential Low Density Park ': 'RP',
+    'Residential Medium Density': 'RM'
+}
+
 st.title('House Price Prediction')
 
 st.write('This is an app that builds a house price prediction machine learning model')
@@ -46,9 +58,15 @@ with st.sidebar:
 
     st.header('Input features')
            
-    msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
-                                      'Residential High Density','Residential Low Density','Residential Low Density Park ',
-                                      'Residential Medium Density'))
+    # msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
+    #                                   'Residential High Density','Residential Low Density','Residential Low Density Park ',
+    #                                   'Residential Medium Density'))
+           
+    # Use selectbox and map user-friendly names to dataset values
+    msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
+    msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
+    st.write("Zoning code selected is: ", msZoning_code)
+
     
     utility = st.selectbox('Utility', ('Electricity, Gas, and Water', 'Electricity and Gas Only', 'Electricity only',
                                       'All Public Utilities'))
