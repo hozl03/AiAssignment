@@ -17,7 +17,7 @@ with st.expander('Data'):
     summary = df.describe().T
     st.write(summary)
 
-    st.write('**Raw data**')
+    st.write('**Wai Kian is gay**')
 
 
 
