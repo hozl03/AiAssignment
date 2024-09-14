@@ -4,8 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import datetime
 
-# Import necessary components from your house_price_prediction.py file
-from house_price_prediction import LinearRegression, SVR, RandomForestRegressor, scaler, important_num_cols, cat_cols
+import joblib
 
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
