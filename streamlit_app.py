@@ -59,8 +59,12 @@ with st.sidebar:
     overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
     st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
-           yearBuilt = st.date_input("Original construction date", datetime.date(2019, 7, 6))
-           st.write("The original construction date is : ", yearBuilt)
+    # Correctly indented date input
+    yearBuilt = st.date_input("Original construction date", datetime.date(2019, 7, 6))
+    st.write("The original construction date is: ", yearBuilt)
+
+
+
 
 
 
