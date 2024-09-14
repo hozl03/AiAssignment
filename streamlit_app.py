@@ -216,23 +216,24 @@ with st.sidebar:
 
 # Ensure input_df has the same structure as df_filtered (used in training)
 input_df = pd.DataFrame(data, index=[0])
+st.write(input_df)
 
-# Concatenate the new input data with the filtered training data to align columns
-input_house = pd.concat([input_df, df_filtered.drop(['SalePrice', 'GarageArea'], axis=1)], axis=0)
+# X = pd.concat([input_df, df_filtered], axis=0)
+# # Select the first row, as this is the one you want to predict
+X = X[:1]  # Keep only the input row for prediction
 
-# Select the first row, as this is the one you want to predict
-input_house = input_house[:1]  # Keep only the input row for prediction
+X = pd.get_dummies(X, columns=cat_cols)
 
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
 # Making prediction
 if model_choice == 'Random Forest':
-    prediction = loaded_random_forest.predict(input_house)
+    prediction = loaded_random_forest.predict(X)
 elif model_choice == 'SVR':
-    prediction = loaded_svr.predict(input_house)
+    prediction = loaded_svr.predict(X)
 else:
-    prediction = loaded_lin_reg.predict(input_house)
+    prediction = loaded_lin_reg.predict(X)
 
 # Display Prediction
 st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
