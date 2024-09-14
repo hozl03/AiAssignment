@@ -203,11 +203,11 @@ with st.sidebar:
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
 
-with st.expander('Input Data'):
-           st.write('**New Data**')
-           input_df
-           st.write('**Combined Data**')
-           input_house
+# with st.expander('Input Data'):
+#            st.write('**New Data**')
+#            input_df
+#            st.write('**Combined Data**')
+#            input_house
 
 
 # Ensure input_df has the same structure as df_filtered (used in training)
