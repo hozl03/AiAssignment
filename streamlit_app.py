@@ -10,3 +10,8 @@ with st.expander('Data'):
   st.write('**Raw data**')
   df = pd.read_csv('train.csv')
   df
+
+  st.write('**Statistical Summary of Dataset**')
+  summary = df.describe().T
+  summary
+
