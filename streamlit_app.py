@@ -143,7 +143,10 @@ with st.sidebar:
     fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
     st.write("Full bathrooms above grade is : ", fullBath)
 
-    kitchenQual = st.selectbox('Kitchen Quality', ('Excellent','Good','Average','Fair','Poor'))
+    # Map kitchen quality input to corresponding code
+    kitchenQual = st.selectbox('Kitchen Quality', list(kitchenQual_mapping.keys()))
+    kitchenQual_code = kitchenQual_mapping[kitchenQual]  # Map to the corresponding code (e.g., "Ex", "Gd")
+    st.write("Kitchen Quality code selected is: ", kitchenQual_code)
 
     garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
     st.write("Size of garage in car capacity is : ", grLiveArea)
