@@ -3,6 +3,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
+           "Good","Very Good","Excellent","Very Excellent"]
+
 st.title('House Price Prediction')
 
 st.write('This is an app that builds a house price prediction machine learning model')
@@ -52,8 +55,8 @@ with st.sidebar:
     buildingType = st.selectbox('Building Type', ('Single-family Detached', 'Two-family Conversion',
                                                   'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
     
-    overallQuality = st.slider("Rates the overall material and finish of the house", 0, 10, 5)
-    st.write("The overall material and finish of the house is ", overallQuality)
+    overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
+    st.write("The overall material and finish of the house is ", rating(overallQuality + 1))
 
 
 
