@@ -217,7 +217,7 @@ input_data = pd.concat([input_df, df_filtered_drop], axis=0)
 encode = ['MSZoning','Utilities','LandSlope','BldgType','KitchenQual','SaleCondition']
 input_data = pd.get_dummies(input_data, prefix=encode)
 input_data[:1]  # Keep only the input row for prediction
-st.write(input_data)
+# st.write(input_data)
 
 
 # input_df = pd.get_dummies(input_df, columns=cat_cols)
