@@ -68,17 +68,17 @@ with st.sidebar:
     yearRemodAdd = st.date_input("Remodel date", datetime.date(2019, 7, 6))
     st.write("The remodel date date is: ", yearBuilt)
 
-    totalBasmtSF = st.slider("Total square feet of basement area", 0, 10000, 500)
+    totalBasmtSF = st.slider("Total square feet of basement area", 0.0, 10000.0, 500.0)
     st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
 
     totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
     st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
 
-    floorSF = st.slider("First Floor square feet", 0, 10000, 500)
+    floorSF = st.slider("First Floor square feet", 0.0, 10000.0, 500.0)
     st.write("First Floor square feet is : ", floorSF, "sqft")
 
-    grLiveArea = st.slider("Above grade (ground) living area square feet", 0, 10000, 500)
+    grLiveArea = st.slider("Above grade (ground) living area square feet", 0.0, 10000.0, 500.0)
     st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
 
     fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
