@@ -97,11 +97,6 @@ with st.sidebar:
 
     st.header('Input features')
            
-    # msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
-    #                                   'Residential High Density','Residential Low Density','Residential Low Density Park ',
-    #                                   'Residential Medium Density'))
-           
-    # Use selectbox and map user-friendly names to dataset values
     msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
     msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
     st.write("Zoning code selected is: ", msZoning_code)
@@ -158,6 +153,27 @@ with st.sidebar:
     saleCondition_code = saleCondition_mapping[saleCondition]
     st.write("Sale Condition code selected is: ", saleCondition_code)
 
+    data = {
+               'msZoning': MSZoning
+               'utility': Utilities
+               'landSlope': LandSlope
+               'buildingType': BldgType
+               'overallQuality': OverallQual
+               'yearBuilt': YearBuilt
+               'yearRemodAdd': YearRemodAdd
+               'totalBasmtSF': TotalBsmtSF
+               'totalRmsAbvGrd': TotRmsAbvGrd
+               'floorSF': 1stFlrSF
+               'grLiveArea': GrLivArea
+               'fullBath': FullBath
+               'kitchenQual': KitchenQual
+               'garageCars' : GarageCars
+               'saleCondition': SaleCondition
+    }
+    input_df = pd.DataFrame(data, index=[0])
+    input_house = pd.concat([input_df, X], axis = 0)
+
+input_df
 
 
 
