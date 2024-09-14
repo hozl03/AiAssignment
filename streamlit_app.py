@@ -94,6 +94,7 @@ with st.expander('Data'):
     df_filtered = df[important_cols]
     st.write("**Filtered Data with Important Columns**")
     st.write(df_filtered)
+    df_filtered_drop = df_filtered.drop(['SalePrice', 'GarageArea'], axis=1)
 
 
 with st.expander('Data Visualization'):
