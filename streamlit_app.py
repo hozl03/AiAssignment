@@ -209,7 +209,7 @@ with st.sidebar:
 input_df = pd.DataFrame(data, index=[0])
 
 # Concatenate the new input data with the filtered training data to align columns
-input_house = pd.concat([input_df, df_filtered.drop('SalePrice', axis=1)], axis=0)
+input_house = pd.concat([input_df, df_filtered.drop('SalePrice','GarageArea', axis=1)], axis=0)
 
 # Select the first row, as this is the one you want to predict
 input_house = input_house[:1]  # Keep only the input row for prediction
