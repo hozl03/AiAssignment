@@ -202,11 +202,6 @@ with st.sidebar:
            'GarageCars': garageCars,  # Use garageCars from slider
            'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
-    input_df = pd.DataFrame(data, index=[0])
-    input_house = pd.concat([input_df, df_filtered], axis=0)
-
-st.write("Input DataFrame:")
-st.write(input_df)
 
 with st.expander('Input Data'):
            st.write('**New Data**')
@@ -217,11 +212,13 @@ with st.expander('Input Data'):
 
 # Ensure input_df has the same structure as df_filtered (used in training)
 input_df = pd.DataFrame(data, index=[0])
-st.write(input_df)
+input_data = pd.concat([input_df, df_filtered_drop], axis=0)
 
-# # Select the first row, as this is the one you want to predict
-input_df = input_df[:1]  # Keep only the input row for prediction
-st.write(input_df)
+encode = ['MSZoning','Utilities']
+input_data = pd.get_dummies(input_data, prefix=encode)
+input_data[:1]  # Keep only the input row for prediction
+st.write(input_data)
+
 
 # input_df = pd.get_dummies(input_df, columns=cat_cols)
 
