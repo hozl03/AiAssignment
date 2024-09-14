@@ -37,3 +37,27 @@ with st.expander('Data Visualization'):
 
 
 
+# Input
+with st.sidebar:
+    st.header('Input features')
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
