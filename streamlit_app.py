@@ -18,7 +18,3 @@ with st.expander('Data'):
   summary
 
   st.write('**Who else is gay**')
-  plt.figure(figsize=(10,8))
-  sns.heatmap(df.corr(), cmap="RdBu")
-  plt.title("Correlations Between Variables", size=15)
-  plt.show()
