@@ -221,7 +221,7 @@ st.write(input_df)
 # # Select the first row, as this is the one you want to predict
 input_df = input_df[:1]  # Keep only the input row for prediction
 
-input_df = pd.get_dummies(X, columns=cat_cols)
+input_df = pd.get_dummies(input_df, columns=cat_cols)
 
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
