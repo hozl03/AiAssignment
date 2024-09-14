@@ -72,6 +72,26 @@ with st.expander('Data'):
     summary = df.describe().T
     st.write(summary)
 
+    # Select more important columns
+    numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Numeric columns only
+    if 'SalePrice' in numeric_df.columns:
+        important_num_cols = list(numeric_df.corr()["SalePrice"][
+            (numeric_df.corr()["SalePrice"] > 0.50) | (numeric_df.corr()["SalePrice"] < -0.50)
+        ].index)
+    else:
+        important_num_cols = []
+
+    # Categorical columns
+    cat_cols = ["MSZoning", "Utilities", "BldgType", "KitchenQual", "SaleCondition", "LandSlope"]
+    important_cols = important_num_cols + cat_cols
+
+    df_filtered = df[important_cols]
+    st.write("**Filtered Data with Important Columns**")
+    st.write(df_filtered)
+    st.write(df_filtered.info())  # Displays data types and non-null counts
+
+
+
 with st.expander('Data Visualization'):
     st.write('**Scatter Plot**')
     st.scatter_chart(data=df, x='OverallQual', y='SalePrice')  # Modify as needed
@@ -89,6 +109,8 @@ with st.expander('Data Visualization'):
         st.pyplot(fig)
     else:
         st.write("No numeric columns available for correlation heatmap.")
+
+
 
 
 
@@ -158,21 +180,21 @@ with st.sidebar:
 
     # Corrected data dictionary with valid variable names
     data = {
-           'msZoning': msZoning_code,  # Use msZoning_code
-           'utility': utility_code,  # Use utility_code
-           'landSlope': landSlope_code,  # Use landSlope_code
-           'buildingType': buildingType_code,  # Use buildingType_code
-           'overallQuality': overallQuality,  # Use overallQuality from slider
-           'yearBuilt': yearBuilt.year,  # Extract the year from date input
-           'yearRemodAdd': yearRemodAdd.year,  # Extract the year from date input
-           'totalBasmtSF': totalBasmtSF,  # Use totalBasmtSF from slider
-           'totalRmsAbvGrd': totalRmsAbvGrd,  # Use totalRmsAbvGrd from slider
-           'floorSF': floorSF,  # Use floorSF from slider
-           'grLiveArea': grLiveArea,  # Use grLiveArea from slider
-           'fullBath': fullBath,  # Use fullBath from slider
-           'kitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
-           'garageCars': garageCars,  # Use garageCars from slider
-           'saleCondition': saleCondition_code  # Use saleCondition_code from selectbox
+           'MSZoning': msZoning_code,  # Use msZoning_code
+           'Utilities': utility_code,  # Use utility_code
+           'LandSlope': landSlope_code,  # Use landSlope_code
+           'BldgType': buildingType_code,  # Use buildingType_code
+           'OverallQual': overallQuality,  # Use overallQuality from slider
+           'YearBuilt': yearBuilt.year,  # Extract the year from date input
+           'YearRemodAdd': yearRemodAdd.year,  # Extract the year from date input
+           'TotalBsmtSF': totalBasmtSF,  # Use totalBasmtSF from slider
+           'TotRmsAbvGrd': totalRmsAbvGrd,  # Use totalRmsAbvGrd from slider
+           '1stFlrSF': floorSF,  # Use floorSF from slider
+           'GrLivArea': grLiveArea,  # Use grLiveArea from slider
+           'FullBath': fullBath,  # Use fullBath from slider
+           'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
+           'GarageCars': garageCars,  # Use garageCars from slider
+           'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
     }
     input_df = pd.DataFrame(data, index=[0])
     input_house = pd.concat([input_df, df], axis=0)
@@ -185,21 +207,6 @@ with st.expander('Input Data'):
            input_df
            st.write('**Combined Data**')
            input_house
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
