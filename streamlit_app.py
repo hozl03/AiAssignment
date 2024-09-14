@@ -56,7 +56,7 @@ with st.sidebar:
                                                   'Duplex', 'Townhouse End Unit', 'Townhouse Inside Unit'))
     
     overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
-    st.write("The overall material and finish of the house is ", rating[overallQuality - 1])
+    st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
 
 
