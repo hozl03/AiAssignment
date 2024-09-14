@@ -244,38 +244,38 @@ with st.sidebar:
 # st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 
 
-    input_df = pd.DataFrame(data, index=[0])
+input_df = pd.DataFrame(data, index=[0])
 
-    # Debugging: Display input DataFrame
-    st.write("Input DataFrame columns:")
-    st.write(input_df.columns)
+# Debugging: Display input DataFrame
+st.write("Input DataFrame columns:")
+st.write(input_df.columns)
 
-    st.write("Input DataFrame head:")
-    st.write(input_df.head())
+st.write("Input DataFrame head:")
+st.write(input_df.head())
 
-    # Ensure input_df has the same structure as df_filtered (used in training)
-    input_df = pd.get_dummies(input_df, columns=cat_cols)
-    input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
-    input_df = input_df.fillna(0)  # Fill missing values
+# Ensure input_df has the same structure as df_filtered (used in training)
+input_df = pd.get_dummies(input_df, columns=cat_cols)
+input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
+input_df = input_df.fillna(0)  # Fill missing values
 
-    # Debugging: Display processed DataFrame
-    st.write("Processed Input DataFrame:")
-    st.write(input_df)
+# Debugging: Display processed DataFrame
+st.write("Processed Input DataFrame:")
+st.write(input_df)
 
-    # Model selection and prediction
-    model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+# Model selection and prediction
+model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
-    try:
-        if model_choice == 'Random Forest':
-            prediction = loaded_random_forest.predict(input_df)
-        elif model_choice == 'SVR':
-            prediction = loaded_svr.predict(input_df)
-        else:
-            prediction = loaded_lin_reg.predict(input_df)
+try:
+if model_choice == 'Random Forest':
+ prediction = loaded_random_forest.predict(input_df)
+elif model_choice == 'SVR':
+ prediction = loaded_svr.predict(input_df)
+else:
+ prediction = loaded_lin_reg.predict(input_df)
 
-        # Display Prediction
-        st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
+# Display Prediction
+st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
+except Exception as e:
+st.error(f"An error occurred: {e}")
 
 
