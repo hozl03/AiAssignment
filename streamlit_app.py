@@ -153,23 +153,24 @@ with st.sidebar:
     saleCondition_code = saleCondition_mapping[saleCondition]
     st.write("Sale Condition code selected is: ", saleCondition_code)
 
-    data = {
-               'msZoning': MSZoning
-               'utility': Utilities
-               'landSlope': LandSlope
-               'buildingType': BldgType
-               'overallQuality': OverallQual
-               'yearBuilt': YearBuilt
-               'yearRemodAdd': YearRemodAdd
-               'totalBasmtSF': TotalBsmtSF
-               'totalRmsAbvGrd': TotRmsAbvGrd
-               'floorSF': FirstFlrSF
-               'grLiveArea': GrLivArea
-               'fullBath': FullBath
-               'kitchenQual': KitchenQual
-               'garageCars' : GarageCars
-               'saleCondition': SaleCondition
-    }
+# Corrected data dictionary with valid variable names
+data = {
+    'msZoning': msZoning_code,  # Use msZoning_code
+    'utility': utility_code,  # Use utility_code
+    'landSlope': landSlope_code,  # Use landSlope_code
+    'buildingType': buildingType_code,  # Use buildingType_code
+    'overallQuality': overallQuality,  # Use overallQuality from slider
+    'yearBuilt': yearBuilt.year,  # Extract the year from date input
+    'yearRemodAdd': yearRemodAdd.year,  # Extract the year from date input
+    'totalBasmtSF': totalBasmtSF,  # Use totalBasmtSF from slider
+    'totalRmsAbvGrd': totalRmsAbvGrd,  # Use totalRmsAbvGrd from slider
+    'floorSF': floorSF,  # Use floorSF from slider
+    'grLiveArea': grLiveArea,  # Use grLiveArea from slider
+    'fullBath': fullBath,  # Use fullBath from slider
+    'kitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
+    'garageCars': garageCars,  # Use garageCars from slider
+    'saleCondition': saleCondition_code  # Use saleCondition_code from selectbox
+}
     input_df = pd.DataFrame(data, index=[0])
     input_house = pd.concat([input_df, X], axis = 0)
 
