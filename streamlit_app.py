@@ -40,6 +40,9 @@ with st.expander('Data Visualization'):
 # Input
 with st.sidebar:
     st.header('Input features')
+    msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
+                                      'Residential High Density','Residential Low Density','Residential Low Density Park ',
+                                      'Residential Medium Density'))
     
 
 
