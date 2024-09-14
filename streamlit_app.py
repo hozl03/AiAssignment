@@ -212,6 +212,21 @@ with st.expander('Input Data'):
            st.write('**Combined Data**')
            input_house
 
+# Apply One-Hot encoding and standard scaling as per your ML pipeline
+input_data_encoded = pd.get_dummies(input_data, columns=cat_cols)
+input_data_scaled = scaler.transform(input_data_encoded[important_num_cols])
+
+# Load trained model and make prediction
+model = RandomForestRegressor()  # Example with RandomForest; adjust based on your needs
+model.fit(X_train, y_train)  # Fit with training data if not pre-saved
+prediction = model.predict(input_data_scaled)
+
+# Display Prediction
+st.write(f'Predicted House Price: ${prediction[0]:,.2f}')
+
+#Display predicted price
+st.subheader('Predicted Price')
+
 
 
 
