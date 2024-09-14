@@ -17,7 +17,7 @@ with st.expander('Data'):
     summary = df.describe().T
     st.write(summary)
 
-Data Visualization
+# Data Visualization
 with st.expander('Data Visualization'):
     st.write('**Scatter Plot**')
     st.scatter_chart(data=df, x='OverallQual', y='SalePrice')  # Modify the x and y axis as per your dataset
