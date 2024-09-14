@@ -214,19 +214,19 @@ with st.sidebar:
 #            st.write('**Combined Data**')
 #            input_house
 
-    input_df = pd.DataFrame(data, index=[0])
-
 # Ensure input_df has the same structure as df_filtered (used in training)
-input_df = pd.get_dummies(input_df, columns=cat_cols)
-
-# Ensure the input_df columns match the model's expected input
-input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
-
+input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
+
+# # Select the first row, as this is the one you want to predict
+input_df = input_df[:1]  # Keep only the input row for prediction
+
+input_df = pd.get_dummies(X, columns=cat_cols)
 
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
+# Making prediction
 if model_choice == 'Random Forest':
     prediction = loaded_random_forest.predict(input_df)
 elif model_choice == 'SVR':
