@@ -221,26 +221,27 @@ st.write(input_df)
 
 # # Select the first row, as this is the one you want to predict
 input_df = input_df[:1]  # Keep only the input row for prediction
+st.write(input_df)
 
-input_df = pd.get_dummies(input_df, columns=cat_cols)
+# input_df = pd.get_dummies(input_df, columns=cat_cols)
 
-# Ensure input_df has the same structure as df_filtered (used in training)
-input_df = pd.get_dummies(input_df, columns=cat_cols)
-input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
-input_df = input_df.fillna(0)  # Fill missing values
+# # Ensure input_df has the same structure as df_filtered (used in training)
+# input_df = pd.get_dummies(input_df, columns=cat_cols)
+# input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
+# input_df = input_df.fillna(0)  # Fill missing values
 
-# Model selection and prediction
-model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+# # Model selection and prediction
+# model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
-# Making prediction
-if model_choice == 'Random Forest':
-    prediction = loaded_random_forest.predict(input_df)
-elif model_choice == 'SVR':
-    prediction = loaded_svr.predict(input_df)
-else:
-    prediction = loaded_lin_reg.predict(input_df)
+# # Making prediction
+# if model_choice == 'Random Forest':
+#     prediction = loaded_random_forest.predict(input_df)
+# elif model_choice == 'SVR':
+#     prediction = loaded_svr.predict(input_df)
+# else:
+#     prediction = loaded_lin_reg.predict(input_df)
 
-# Display Prediction
-st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
+# # Display Prediction
+# st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 
 
