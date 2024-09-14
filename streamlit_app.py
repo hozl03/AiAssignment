@@ -68,6 +68,10 @@ with st.expander('Data'):
     df = pd.read_csv('train.csv')
     st.write(df)
 
+    st.write('**X**')
+    df_drop = df.drop('id',axis=1)
+    st.write(X)
+           
     st.write('**Statistical Summary of Dataset**')
     summary = df.describe().T
     st.write(summary)
