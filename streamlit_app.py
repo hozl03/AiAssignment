@@ -71,6 +71,10 @@ with st.sidebar:
     totalBasmtSF = st.slider("Total square feet of basement area", 0, 10000, 500)
     st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
 
+    totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
+    st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
+
+
     floorSF = st.slider("First Floor square feet", 0, 10000, 500)
     st.write("First Floor square feet is : ", floorSF, "sqft")
 
