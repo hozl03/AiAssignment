@@ -45,6 +45,7 @@ with st.expander('Data Visualization'):
 with st.sidebar:
 
     st.header('Input features')
+           
     msZoning = st.selectbox('Zoning', ('Agriculture', 'Commercial', 'Floating Village Residential','Industrial', 
                                       'Residential High Density','Residential Low Density','Residential Low Density Park ',
                                       'Residential Medium Density'))
@@ -69,6 +70,25 @@ with st.sidebar:
 
     totalBasmtSF = st.slider("Total square feet of basement area", 0, 10000, 500)
     st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
+
+    floorSF = st.slider("First Floor square feet", 0, 10000, 500)
+    st.write("First Floor square feet is : ", floorSF, "sqft")
+
+    grLiveArea = st.slider("Above grade (ground) living area square feet", 0, 10000, 500)
+    st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
+
+    fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
+    st.write("Full bathrooms above grade is : ", fullBath)
+
+    kitchenQual = st.selectbox('Kitchen Quality', ('Excellent','Good','Average','Fair','Poor'))
+
+    garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
+    st.write("Size of garage in car capacity is : ", grLiveArea)
+
+    saleCondition = st.selectbox('Condition of Sale', ('Normal Sale','Abnormal Sale','Adjoining Land Purchase',
+                                                      'Allocation','Family','Partial'))
+
+
 
 
 
