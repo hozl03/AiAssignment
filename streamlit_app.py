@@ -227,8 +227,8 @@ input_data[:1]  # Keep only the input row for prediction
 # input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
 # input_df = input_df.fillna(0)  # Fill missing values
 
-# # Model selection and prediction
-# model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+# Model selection and prediction
+model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
 # # Making prediction
 # if model_choice == 'Random Forest':
