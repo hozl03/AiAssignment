@@ -164,24 +164,27 @@ with st.sidebar:
     st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
     # Correctly indented date input
-    yearBuilt = st.date_input("Original construction date", datetime.date(1990, 7, 6))
+    yearBuilt = st.number_input("Original construction date", value=None, placeholder="Enter a year")
     st.write("The original construction date is: ", yearBuilt)
+
            
-    yearRemodAdd = st.date_input("Remodel date", datetime.date(1990, 7, 6))
+    yearRemodAdd = st.number_input("Remodel date", value=None, placeholder="Enter a year")
     st.write("The remodel date date is: ", yearBuilt)
 
-    totalBasmtSF = st.slider("Total square feet of basement area", 0.0, 10000.0, 500.0)
+    totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
     st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
+
 
     totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
     st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
-
-    floorSF = st.slider("First Floor square feet", 0.0, 10000.0, 500.0)
+           
+    totalBasmtSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
     st.write("First Floor square feet is : ", floorSF, "sqft")
 
-    grLiveArea = st.slider("Above grade (ground) living area square feet", 0.0, 10000.0, 500.0)
+    totalBasmtSF = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
     st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
+
 
     fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
     st.write("Full bathrooms above grade is : ", fullBath)
