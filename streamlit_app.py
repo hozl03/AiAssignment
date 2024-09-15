@@ -234,7 +234,7 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 # scaler = StandardScaler()
 # X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 # st.write(X.head())
-
+important_num_cols.remove("GarageArea")
 # Handle categorical variables before numeric scaling
 X = pd.get_dummies(input_data, columns=cat_cols)
 
