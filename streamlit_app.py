@@ -78,6 +78,8 @@ with st.expander('Data'):
     st.write('**Statistical Summary of Dataset**')
     summary = df.describe().T
     st.write(summary)
+           
+important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
 
     # Select more important columns
     numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Numeric columns only
