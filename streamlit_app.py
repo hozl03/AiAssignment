@@ -232,7 +232,7 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 
 important_num_cols.remove("GarageArea")
 # Handle categorical variables before numeric scaling
-X = pd.get_dummies(input_data, columns=cat_cols)
+X = pd.get_dummies(input_df, columns=cat_cols)
 
 st.write(X)
 
@@ -259,8 +259,8 @@ X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 st.write("## Prediction Results")
 if st.button('Predict'):
     # # Linear Regression prediction
-    # lin_reg_pred = loaded_lin_reg.predict(input_data)
-    # st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+    lin_reg_pred = loaded_lin_reg.predict(input_data)
+    st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
     # Support Vector Regressor prediction
     svr_pred = loaded_svr.predict(input_data)
@@ -272,23 +272,5 @@ if st.button('Predict'):
 
 
 
-# input_df = pd.get_dummies(input_df, columns=cat_cols)
-
-# # Ensure input_df has the same structure as df_filtered (used in training)
-# input_df = pd.get_dummies(input_df, columns=cat_cols)
-# input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
-# input_df = input_df.fillna(0)  # Fill missing values
-
-
-# # Making prediction
-# if model_choice == 'Random Forest':
-#     prediction = loaded_random_forest.predict(input_df)
-# elif model_choice == 'SVR':
-#     prediction = loaded_svr.predict(input_df)
-# else:
-#     prediction = loaded_lin_reg.predict(input_df)
-
-# # Display Prediction
-# st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 
 
