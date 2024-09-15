@@ -231,7 +231,7 @@ important_num_cols.remove("SalePrice")
 #Standardization of data
 scaler = StandardScaler()
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
-X.head()
+st.write(X.head())
 # input_data[:1]  # Keep only the input row for prediction
 # st.write(input_data)
 
