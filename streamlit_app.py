@@ -11,6 +11,7 @@ loaded_random_forest = joblib.load('random_forest_model.joblib')
 loaded_svr = joblib.load('svr_model.joblib')
 loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
+
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
 
