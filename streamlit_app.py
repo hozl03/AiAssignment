@@ -226,16 +226,47 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 # important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
 
 
-X = input_data.drop("SalePrice", axis=1)
-y = input_data["SalePrice"]
-X = pd.get_dummies(X, columns=cat_cols)
-important_num_cols.remove("SalePrice")
-#Standardization of data
-scaler = StandardScaler()
-X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
+# X = input_data.drop("SalePrice", axis=1)
+# y = input_data["SalePrice"]
+# X = pd.get_dummies(X, columns=cat_cols)
+# important_num_cols.remove("SalePrice")
+# #Standardization of data
+# scaler = StandardScaler()
+# X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 # st.write(X.head())
-# input_data[:1]  # Keep only the input row for prediction
-# st.write(input_data)
+
+# Handle categorical variables before numeric scaling
+X = pd.get_dummies(input_data, columns=cat_cols)
+
+# Ensure SalePrice is not in important_num_cols
+if 'SalePrice' in important_num_cols:
+    important_num_cols.remove("SalePrice")
+
+# Handle the case where the important numeric columns are scaled after dummy encoding
+# Check if important_num_cols exist in X
+missing_cols = [col for col in important_num_cols if col not in X.columns]
+
+if missing_cols:
+    st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+
+# Standardization of data
+scaler = StandardScaler()
+# Apply scaler only on numeric columns
+X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
+
+# Model selection and prediction
+model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+
+# Making prediction
+if model_choice == 'Random Forest':
+    prediction = loaded_random_forest.predict(X[:1])
+elif model_choice == 'SVR':
+    prediction = loaded_svr.predict(X[:1])
+else:
+    prediction = loaded_lin_reg.predict(X[:1])
+
+# Display Prediction
+st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 
 
 # input_df = pd.get_dummies(input_df, columns=cat_cols)
