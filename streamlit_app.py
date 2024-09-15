@@ -535,15 +535,15 @@ model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Reg
 st.write("## Prediction Results")
 if st.button('Predict'):
     # Linear Regression prediction
-    lin_reg_pred = lin_reg.predict(input_data)
+    lin_reg_pred = loaded_lin_reg(input_data)
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
     # Support Vector Regressor prediction
-    svr_pred = best_svr.predict(input_data)
+    svr_pred = loaded_svr.predict(input_data)
     st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
     # Random Forest Regressor prediction
-    random_forest_pred = random_forest.predict(input_data)
+    random_forest_pred = loaded_random_forest.predict(input_data)
     st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
 
 
