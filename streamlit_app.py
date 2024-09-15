@@ -295,7 +295,8 @@ st.write("## Prediction Results")
 if st.button('Predict'):
     # Linear Regression prediction
     lin_reg_pred = loaded_lin_reg.predict(X)
-    
+    st.write(df.isna().sum())
+
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
     # Support Vector Regressor prediction
