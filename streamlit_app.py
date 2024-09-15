@@ -259,7 +259,7 @@ X = X.drop('SalePrice', axis=1)
 # Convert binary columns from 1/0 to True/False
 for column in X.columns:
     if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-        X[column] = X[column].astype(bool)
+        X = X[column].astype(bool)
 
 st.write(X[:1])
 
