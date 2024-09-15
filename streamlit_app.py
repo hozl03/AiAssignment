@@ -253,7 +253,7 @@ scaler = StandardScaler()
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 
 # Model selection and prediction
-model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+# model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
 # Prediction using different models
 st.write("## Prediction Results")
