@@ -234,6 +234,8 @@ important_num_cols.remove("GarageArea")
 # Handle categorical variables before numeric scaling
 X = pd.get_dummies(input_data, columns=cat_cols)
 
+st.write(X)
+
 # Ensure SalePrice is not in important_num_cols
 if 'SalePrice' in important_num_cols:
     important_num_cols.remove("SalePrice")
