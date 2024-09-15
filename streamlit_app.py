@@ -252,7 +252,7 @@ scaler = StandardScaler()
 # Apply scaler only on numeric columns
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 X = X.drop('SalePrice', axis=1)
-st.write(X)
+st.write(X[:1])
 
 # Model selection and prediction
 # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
