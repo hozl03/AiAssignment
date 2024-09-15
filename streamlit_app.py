@@ -206,10 +206,6 @@ with st.sidebar:
 
     # Corrected data dictionary with valid variable names
     data = {
-           'MSZoning': msZoning_code,  # Use msZoning_code
-           'Utilities': utility_code,  # Use utility_code
-           'LandSlope': landSlope_code,  # Use landSlope_code
-           'BldgType': buildingType_code,  # Use buildingType_code
            'OverallQual': overallQuality,  # Use overallQuality from slider
            'YearBuilt': yearBuilt.year,  # Extract the year from date input
            'YearRemodAdd': yearRemodAdd.year,  # Extract the year from date input
@@ -218,9 +214,13 @@ with st.sidebar:
            '1stFlrSF': floorSF,  # Use floorSF from slider
            'GrLivArea': grLiveArea,  # Use grLiveArea from slider
            'FullBath': fullBath,  # Use fullBath from slider
-           'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
            'GarageCars': garageCars,  # Use garageCars from slider
+           'MSZoning': msZoning_code,  # Use msZoning_code
+           'Utilities': utility_code,  # Use utility_code
+           'BldgType': buildingType_code,  # Use buildingType_code
+           'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
            'SaleCondition': saleCondition_code,  # Use saleCondition_code from selectbox
+           'LandSlope': landSlope_code,  # Use landSlope_code
     }
 
 
