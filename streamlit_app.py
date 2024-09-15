@@ -80,7 +80,7 @@ saleCondition_mapping = {
 
 st.title('House Price Prediction')
 
-st.write('This is an app that builds a house price prediction machine learning model')
+st.write('The Best Machine Learning App For House Price Prediction!')
 
 # Load the data
 with st.expander('Data Set'):
