@@ -26,8 +26,7 @@ loaded_random_forest = joblib.load('random_forest_model.joblib')
 loaded_svr = joblib.load('svr_model.joblib')
 loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
-
-
+saved_feature_names = joblib.load('saved_feature_names.joblib')
 
 
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
@@ -229,50 +228,79 @@ with st.sidebar:
 # Ensure input_df has the same structure as df_filtered (used in training)
 input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
-input_data = pd.concat([input_df, df_filtered], axis=0)
+# input_data = pd.concat([input_df, df_filtered], axis=0)
 
-important_num_cols.remove("GarageArea")
-# Handle categorical variables before numeric scaling
-X = pd.get_dummies(input_data, columns=cat_cols)
+# important_num_cols.remove("GarageArea")
+# # Handle categorical variables before numeric scaling
+# X = pd.get_dummies(input_data, columns=cat_cols)
 
 
 
-st.write(X)
+# st.write(X)
 
-# Ensure SalePrice is not in important_num_cols
-if 'SalePrice' in important_num_cols:
-    important_num_cols.remove("SalePrice")
+# # Ensure SalePrice is not in important_num_cols
+# if 'SalePrice' in important_num_cols:
+#     important_num_cols.remove("SalePrice")
 
-# Handle the case where the important numeric columns are scaled after dummy encoding
-# Check if important_num_cols exist in X
-missing_cols = [col for col in important_num_cols if col not in X.columns]
+# # Handle the case where the important numeric columns are scaled after dummy encoding
+# # Check if important_num_cols exist in X
+# missing_cols = [col for col in important_num_cols if col not in X.columns]
 
-if missing_cols:
-    st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
+# if missing_cols:
+#     st.write(f"Warning: The following important numeric columns are missing from the dataset after processing: {missing_cols}")
 
-# Standardization of data
-scaler = StandardScaler()
-# Apply scaler only on numeric columns
-X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
-X = X.drop('SalePrice', axis=1)
+# # Standardization of data
+# scaler = StandardScaler()
+# # Apply scaler only on numeric columns
+# X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
+# X = X.drop('SalePrice', axis=1)
 
-# Convert binary columns from 1/0 to True/False
-for column in X.columns:
-    if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-        X = X[column].astype(bool)
+# # Convert binary columns from 1/0 to True/False
+# for column in X.columns:
+#     if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+#         X = X[column].astype(bool)
 
-st.write(X[:1])
+# st.write(X[:1])
 
-# Model selection and prediction
-# model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+# # Model selection and prediction
+# # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
-# Prediction using different models
-st.write("## Prediction Results")
-if st.button('Predict'):
-    # # Linear Regression prediction
-    lin_reg_pred = loaded_lin_reg.predict(X)
+# # Prediction using different models
+# st.write("## Prediction Results")
+# if st.button('Predict'):
+#     # # Linear Regression prediction
+#     lin_reg_pred = loaded_lin_reg.predict(X)
     
+#     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+
+# One-hot encode categorical columns
+cat_cols = ["MSZoning", "Utilities", "BldgType", "KitchenQual", "SaleCondition", "LandSlope"]
+input_encoded = pd.get_dummies(input_df, columns=cat_cols, drop_first=True)
+
+# Align columns with saved feature names
+for col in saved_feature_names:
+    if col not in input_encoded.columns:
+        input_encoded[col] = 0  # Add missing columns with zero values
+
+# Remove extra columns that were not in training
+input_encoded = input_encoded[saved_feature_names]
+
+# Standardize numerical columns as done during training
+# (Ensure that the same StandardScaler used during training is applied)
+scaler = joblib.load('scaler.pkl')  # Load the saved scaler
+numeric_cols = ['OverallQual', 'YearBuilt', 'YearRemodAdd', 'TotalBsmtSF', 'TotRmsAbvGrd', '1stFlrSF', 'GrLivArea', 'FullBath', 'GarageCars']
+input_encoded[numeric_cols] = scaler.transform(input_encoded[numeric_cols])
+
+# Make predictions
+if st.button('Predict'):
+    lin_reg_pred = loaded_lin_reg.predict(input_encoded)
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+    
+    svr_pred = loaded_svr.predict(input_encoded)
+    st.write(f"**SVR Prediction: ${svr_pred[0]:,.2f}**")
+    
+    random_forest_pred = loaded_random_forest.predict(input_encoded)
+    st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
 
     # # Support Vector Regressor prediction
     # svr_pred = loaded_svr.predict(X)
