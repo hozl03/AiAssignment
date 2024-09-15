@@ -217,13 +217,13 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 # encode = ['MSZoning','Utilities','LandSlope','BldgType','KitchenQual','SaleCondition']
 # input_data = pd.get_dummies(input_data, prefix=encode)
 
-# Step 1: Identify non-numeric columns (optional, for understanding)
-print(df.dtypes)
+# # Step 1: Identify non-numeric columns (optional, for understanding)
+# print(df.dtypes)
 
-# Step 2: Select only numeric columns
-numeric_df = df.select_dtypes(include=[float, int])
+# # Step 2: Select only numeric columns
+# numeric_df = df.select_dtypes(include=[float, int])
 
-important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
+# important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
 
 
 X = input_data.drop("SalePrice", axis=1)
