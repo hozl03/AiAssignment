@@ -22,9 +22,9 @@ from sklearn.preprocessing import PolynomialFeatures
 
 import joblib
 
-# loaded_random_forest = joblib.load('random_forest_model.joblib')
-# loaded_svr = joblib.load('svr_model.joblib')
-# loaded_lin_reg = joblib.load('linear_regression_model.joblib')
+loaded_random_forest = joblib.load('random_forest_model.joblib')
+loaded_svr = joblib.load('svr_model.joblib')
+loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
 # #rerun entire machine learning 
 # df = pd.read_csv('train.csv')
@@ -482,6 +482,7 @@ with st.sidebar:
 
 # Ensure input_df has the same structure as df_filtered (used in training)
 input_df = pd.DataFrame(data, index=[0])
+st.write(input_df)
 input_data = pd.concat([input_df, df_filtered], axis=0)
 
 # X = df.drop("SalePrice", axis=1)
