@@ -263,9 +263,10 @@ st.write(X[:1])
 st.write("## Prediction Results")
 if st.button('Predict'):
     # # Linear Regression prediction
-    lin_reg_pred = loaded_lin_reg.predict(X)
+    # lin_reg_pred = loaded_lin_reg.predict(X)
     
-    st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+    # st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+    st.write(f"**Linear Regression Prediction: $**")
 
     # # Support Vector Regressor prediction
     # svr_pred = loaded_svr.predict(X)
