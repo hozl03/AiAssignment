@@ -29,6 +29,7 @@ loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
 
 
+
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
            "Good","Very Good","Excellent","Very Excellent"]
 
@@ -234,6 +235,11 @@ important_num_cols.remove("GarageArea")
 # Handle categorical variables before numeric scaling
 X = pd.get_dummies(input_data, columns=cat_cols)
 
+# Convert binary columns from 1/0 to True/False
+for column in X.columns:
+    if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+        X[column] = X[column].astype(bool)
+
 st.write(X)
 
 # Ensure SalePrice is not in important_num_cols
@@ -262,15 +268,16 @@ st.write("## Prediction Results")
 if st.button('Predict'):
     # # Linear Regression prediction
     lin_reg_pred = loaded_lin_reg.predict(X)
+    
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
-    # Support Vector Regressor prediction
-    svr_pred = loaded_svr.predict(X)
-    st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+    # # Support Vector Regressor prediction
+    # svr_pred = loaded_svr.predict(X)
+    # st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
-    # Random Forest Regressor prediction
-    random_forest_pred = loaded_random_forest.predict(X)
-    st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
+    # # Random Forest Regressor prediction
+    # random_forest_pred = loaded_random_forest.predict(X)
+    # st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
 
 
 
