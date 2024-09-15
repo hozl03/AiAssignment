@@ -284,13 +284,13 @@ if st.button('Predict'):
     
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
-    # # Support Vector Regressor prediction
-    # svr_pred = loaded_svr.predict(X)
-    # st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+    # Support Vector Regressor prediction
+    svr_pred = loaded_svr.predict(X)
+    st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
-    # # Random Forest Regressor prediction
-    # random_forest_pred = loaded_random_forest.predict(X)
-    # st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
+    # Random Forest Regressor prediction
+    random_forest_pred = loaded_random_forest.predict(X)
+    st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
 
 
 
