@@ -293,19 +293,25 @@ with st.expander('Input Data'):
            # Prediction using different models
 st.write("## Prediction Results")
 if st.button('Predict'):
-    # Linear Regression prediction
-    lin_reg_pred = loaded_lin_reg.predict(X)
-    st.write(df.isna().sum())
+    # Check for missing inputs (NaN or None values)
+    missing_values = input_df.isnull().sum()
 
-    st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+    # Check if there are any missing values in the user's input
+    if missing_values.any():
+        st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
+    else:
+        # Proceed with prediction only if no values are missing
+        # Linear Regression prediction
+        lin_reg_pred = loaded_lin_reg.predict(X)
+        st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
-    # Support Vector Regressor prediction
-    svr_pred = loaded_svr.predict(X)
-    st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+        # Support Vector Regressor prediction
+        svr_pred = loaded_svr.predict(X)
+        st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
-    # Random Forest Regressor prediction
-    random_forest_pred = loaded_random_forest.predict(X)
-    st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
+        # Random Forest Regressor prediction
+        random_forest_pred = loaded_random_forest.predict(X)
+        st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
 
 
 
