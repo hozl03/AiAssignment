@@ -179,10 +179,10 @@ with st.sidebar:
     st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
            
-    totalBasmtSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
+    floorSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
     st.write("First Floor square feet is : ", floorSF, "sqft")
 
-    totalBasmtSF = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
+    grLiveArea = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
     st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
 
 
