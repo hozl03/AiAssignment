@@ -253,8 +253,8 @@ for column in X.columns:
     if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
         X = X[column].astype(bool)
 
-st.write(X[:1])
 X = X[column_names]
+st.write(X[:1])
 
 # Model selection and prediction
 # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
