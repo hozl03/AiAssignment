@@ -26,7 +26,7 @@ loaded_random_forest = joblib.load('random_forest_model.joblib')
 loaded_svr = joblib.load('svr_model.joblib')
 loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
-saved_feature_names = joblib.load('saved_feature_names.joblib')
+saved_feature_names = joblib.load('saved_feature_names.pkl')
 
 
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
