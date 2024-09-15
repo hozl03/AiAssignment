@@ -251,7 +251,7 @@ if missing_cols:
 scaler = StandardScaler()
 # Apply scaler only on numeric columns
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
-X.drop('SalePrice', axis=0)
+X = X.drop('SalePrice', axis=1)
 st.write(X)
 
 # Model selection and prediction
