@@ -217,9 +217,18 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 # X = df.drop("SalePrice", axis=1)
 # y = df["SalePrice"]
 
-encode = ['MSZoning','Utilities','LandSlope','BldgType','KitchenQual','SaleCondition']
-input_data = pd.get_dummies(input_data, prefix=encode)
-input_data[:1]  # Keep only the input row for prediction
+# encode = ['MSZoning','Utilities','LandSlope','BldgType','KitchenQual','SaleCondition']
+# input_data = pd.get_dummies(input_data, prefix=encode)
+
+X = input_data.drop("SalePrice", axis=1)
+y = input_data["SalePrice"]
+X = pd.get_dummies(X, columns=cat_cols)
+important_num_cols.remove("SalePrice")
+#Standardization of data
+scaler = StandardScaler()
+X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
+X.head()
+# input_data[:1]  # Keep only the input row for prediction
 # st.write(input_data)
 
 
