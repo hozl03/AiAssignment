@@ -26,7 +26,8 @@ loaded_random_forest = joblib.load('random_forest_model.joblib')
 loaded_svr = joblib.load('svr_model.joblib')
 loaded_lin_reg = joblib.load('linear_regression_model.joblib')
 
-saved_feature_names = joblib.load('saved_feature_names.pkl')
+column_names = joblib.load('saved_feature_names.pkl')
+scaler = joblib.load('scaler.pkl')
 
 
 rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
@@ -256,6 +257,14 @@ for column in X.columns:
 
 st.write(X[:1])
 
+# Preprocess the input data in the same way as during training
+input_data_preprocessed = pd.get_dummies(input_data)  # Apply one-hot encoding
+input_data_preprocessed = input_data_preprocessed.reindex(columns=column_names, fill_value=0)  # Ensure correct columns
+
+# Standardize the numerical columns
+numeric_cols = ['OverallQual', 'YearBuilt', 'YearRemodAdd', 'TotalBsmtSF', 'TotRmsAbvGrd', '1stFlrSF', 'GrLivArea', 'FullBath', 'GarageCars']
+input_data_preprocessed[numeric_cols] = scaler.transform(input_data_preprocessed[numeric_cols])
+
 # Model selection and prediction
 # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
@@ -263,7 +272,7 @@ st.write(X[:1])
 st.write("## Prediction Results")
 if st.button('Predict'):
     # Linear Regression prediction
-    lin_reg_pred = loaded_lin_reg.predict(X)
+    lin_reg_pred = loaded_lin_reg.predict(input_data_preprocessed)
     
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
