@@ -235,10 +235,7 @@ important_num_cols.remove("GarageArea")
 # Handle categorical variables before numeric scaling
 X = pd.get_dummies(input_data, columns=cat_cols)
 
-# Convert binary columns from 1/0 to True/False
-for column in X.columns:
-    if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
-        X[column] = X[column].astype(bool)
+
 
 st.write(X)
 
@@ -258,6 +255,12 @@ scaler = StandardScaler()
 # Apply scaler only on numeric columns
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 X = X.drop('SalePrice', axis=1)
+
+# Convert binary columns from 1/0 to True/False
+for column in X.columns:
+    if X[column].dtype == 'uint8':  # This is the data type for binary columns created by pd.get_dummies
+        X[column] = X[column].astype(bool)
+
 st.write(X[:1])
 
 # Model selection and prediction
