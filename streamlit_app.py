@@ -205,8 +205,8 @@ with st.sidebar:
     # Corrected data dictionary with valid variable names
     data = {
            'OverallQual': overallQuality,  # Use overallQuality from slider
-           'YearBuilt': yearBuilt.year,  # Extract the year from date input
-           'YearRemodAdd': yearRemodAdd.year,  # Extract the year from date input
+           'YearBuilt': yearBuilt,  # Extract the year from date input
+           'YearRemodAdd': yearRemodAdd,  # Extract the year from date input
            'TotalBsmtSF': totalBasmtSF,  # Use totalBasmtSF from slider
            'TotRmsAbvGrd': totalRmsAbvGrd,  # Use totalRmsAbvGrd from slider
            '1stFlrSF': floorSF,  # Use floorSF from slider
