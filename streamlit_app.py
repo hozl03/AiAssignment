@@ -251,6 +251,7 @@ if missing_cols:
 scaler = StandardScaler()
 # Apply scaler only on numeric columns
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
+st.write(X)
 
 # Model selection and prediction
 # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
