@@ -234,12 +234,6 @@ X = pd.get_dummies(input_data, columns=cat_cols)
 st.write(X)
 
 important_num_cols.remove("SalePrice")
-# important_num_cols.remove("YearBuilt")
-important_num_cols.remove("YearRemodAdd")
-important_num_cols.remove("TotalBsmtSF")
-important_num_cols.remove("1stFlrSF")
-important_num_cols.remove("GrLivArea")
-# important_num_cols.remove("FullBath")
 
 # Handle the case where the important numeric columns are scaled after dummy encoding
 # Check if important_num_cols exist in X
