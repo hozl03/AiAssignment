@@ -201,7 +201,6 @@ with st.sidebar:
            'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
            'GarageCars': garageCars,  # Use garageCars from slider
            'SaleCondition': saleCondition_code,  # Use saleCondition_code from selectbox
-           'SalePrice' :
     }
 
 # with st.expander('Input Data'):
