@@ -94,7 +94,7 @@ with st.expander('Data'):
     df_filtered = df[important_cols]
     st.write("**Filtered Data with Important Columns**")
 
-    df_filtered = df_filtered.drop(['GarageArea', axis=1)
+    df_filtered = df_filtered.drop('GarageArea', axis=1)
     st.write(df_filtered)
 
 
