@@ -140,68 +140,67 @@ with st.sidebar:
 
     st.header('Input features')
            
-    msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
-    msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
-    st.write("Zoning code selected is: ", msZoning_code)
-
-    
-    # Utility input with mapping
-    utility = st.selectbox('Utility', list(utility_mapping.keys()))
-    utility_code = utility_mapping[utility]
-    st.write("Utility code selected is: ", utility_code)
-
-    # Land Slope input with mapping
-    landSlope = st.selectbox('Land Slope', list(landSlope_mapping.keys()))
-    landSlope_code = landSlope_mapping[landSlope]
-    st.write("Land Slope code selected is: ", landSlope_code)
-
-    # Building Type input with mapping
-    buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
-    buildingType_code = buildingType_mapping[buildingType]
-    st.write("Building Type code selected is: ", buildingType_code)
-           
     overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
     st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
-    # Correctly indented date input
     yearBuilt = st.number_input("Original construction date", value=None, placeholder="Enter a year")
     st.write("The original construction date is: ", yearBuilt)
 
-           
     yearRemodAdd = st.number_input("Remodel date", value=None, placeholder="Enter a year")
     st.write("The remodel date date is: ", yearBuilt)
 
     totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
     st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
 
-
     totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
     st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
-           
     floorSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
     st.write("First Floor square feet is : ", floorSF, "sqft")
 
     grLiveArea = st.number_input("Above grade (ground) living area square feet", value=None, placeholder="Enter the square feet")
     st.write("Above grade (ground) living area square feet is : ", grLiveArea, "sqft")
 
-
     fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
     st.write("Full bathrooms above grade is : ", fullBath)
 
+    garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
+    st.write("Size of garage in car capacity is : ", grLiveArea)
+           
+    msZoning = st.selectbox('Zoning', list(msZoning_mapping.keys()))
+    msZoning_code = msZoning_mapping[msZoning]  # Map to the corresponding code (e.g., "A", "C")
+    st.write("Zoning code selected is: ", msZoning_code)
+
+    # Utility input with mapping
+    utility = st.selectbox('Utility', list(utility_mapping.keys()))
+    utility_code = utility_mapping[utility]
+    st.write("Utility code selected is: ", utility_code)
+
+    # Building Type input with mapping
+    buildingType = st.selectbox('Building Type', list(buildingType_mapping.keys()))
+    buildingType_code = buildingType_mapping[buildingType]
+    st.write("Building Type code selected is: ", buildingType_code)
+
+
+           
     # Map kitchen quality input to corresponding code
     kitchenQual = st.selectbox('Kitchen Quality', list(kitchenQual_mapping.keys()))
     kitchenQual_code = kitchenQual_mapping[kitchenQual]  # Map to the corresponding code (e.g., "Ex", "Gd")
     st.write("Kitchen Quality code selected is: ", kitchenQual_code)
 
-    garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
-    st.write("Size of garage in car capacity is : ", grLiveArea)
 
     # Sale Condition input with mapping
     saleCondition = st.selectbox('Condition of Sale', list(saleCondition_mapping.keys()))
     saleCondition_code = saleCondition_mapping[saleCondition]
     st.write("Sale Condition code selected is: ", saleCondition_code)
 
+    # Land Slope input with mapping
+    landSlope = st.selectbox('Land Slope', list(landSlope_mapping.keys()))
+    landSlope_code = landSlope_mapping[landSlope]
+    st.write("Land Slope code selected is: ", landSlope_code)
+
+
+           
     # Corrected data dictionary with valid variable names
     data = {
            'OverallQual': overallQuality,  # Use overallQuality from slider
