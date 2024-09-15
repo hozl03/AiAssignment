@@ -232,7 +232,7 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 
 important_num_cols.remove("GarageArea")
 # Handle categorical variables before numeric scaling
-X = pd.get_dummies(input_df, columns=cat_cols)
+X = pd.get_dummies(input_data, columns=cat_cols)
 
 st.write(X)
 
