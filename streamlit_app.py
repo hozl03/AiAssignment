@@ -253,6 +253,7 @@ with st.expander('Input Data'):
 
            # Ensure input_df has the same structure as df_filtered (used in training)
            input_df = pd.DataFrame(data, index=[0])
+           st.write('User Input Data')
            st.write(input_df)
            input_data = pd.concat([input_df, df_filtered], axis=0)
            
@@ -261,8 +262,6 @@ with st.expander('Input Data'):
            X = pd.get_dummies(input_data, columns=cat_cols)
            
            
-           
-           st.write(X)
            
            important_num_cols.remove("SalePrice")
            
@@ -285,6 +284,7 @@ with st.expander('Input Data'):
                    X = X[column].astype(bool)
            
            X = X[column_names]
+           st.write('Standardized Input Data')
            st.write(X[:1])
            
            # Model selection and prediction
