@@ -94,8 +94,8 @@ with st.expander('Data'):
     df_filtered = df[important_cols]
     st.write("**Filtered Data with Important Columns**")
 
-    df_filtered_drop = df_filtered.drop(['SalePrice', 'GarageArea'], axis=1)
-    st.write(df_filtered_drop)
+    df_filtered = df_filtered.drop(['GarageArea', axis=1)
+    st.write(df_filtered)
 
 
 with st.expander('Data Visualization'):
@@ -200,7 +200,8 @@ with st.sidebar:
            'FullBath': fullBath,  # Use fullBath from slider
            'KitchenQual': kitchenQual_code,  # Use kitchenQual_code from selectbox
            'GarageCars': garageCars,  # Use garageCars from slider
-           'SaleCondition': saleCondition_code  # Use saleCondition_code from selectbox
+           'SaleCondition': saleCondition_code,  # Use saleCondition_code from selectbox
+           'SalePrice' 
     }
 
 # with st.expander('Input Data'):
@@ -212,7 +213,7 @@ with st.sidebar:
 
 # Ensure input_df has the same structure as df_filtered (used in training)
 input_df = pd.DataFrame(data, index=[0])
-input_data = pd.concat([input_df, df_filtered_drop], axis=0)
+input_data = pd.concat([input_df, df_filtered], axis=0)
 
 encode = ['MSZoning','Utilities','LandSlope','BldgType','KitchenQual','SaleCondition']
 input_data = pd.get_dummies(input_data, prefix=encode)
