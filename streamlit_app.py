@@ -254,7 +254,7 @@ for column in X.columns:
         X = X[column].astype(bool)
 
 st.write(X[:1])
-
+X = X[column_names]
 
 # Model selection and prediction
 # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
