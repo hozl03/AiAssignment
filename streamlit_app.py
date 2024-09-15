@@ -535,7 +535,7 @@ model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Reg
 st.write("## Prediction Results")
 if st.button('Predict'):
     # Linear Regression prediction
-    lin_reg_pred = loaded_lin_reg(input_data)
+    lin_reg_pred = loaded_lin_reg.predict(input_data)
     st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
     # Support Vector Regressor prediction
