@@ -79,6 +79,12 @@ with st.expander('Data'):
     summary = df.describe().T
     st.write(summary)
            
+    # Step 1: Identify non-numeric columns (optional, for understanding)
+    print(df.dtypes)
+
+    # Step 2: Select only numeric columns
+    numeric_df = df.select_dtypes(include=[float, int])
+
     important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
 
     # Select more important columns
