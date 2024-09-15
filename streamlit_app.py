@@ -34,21 +34,16 @@ rating = ["Very Poor","Poor","Fair","Below Average","Average","Above Average",
 
 # Mapping for MSZoning
 msZoning_mapping = {
-    'Agriculture': 'A',
-    'Commercial': 'C',
+    'Commercial': 'C (all)',
     'Floating Village Residential': 'FV',
-    'Industrial': 'I',
     'Residential High Density': 'RH',
     'Residential Low Density': 'RL',
-    'Residential Low Density Park ': 'RP',
     'Residential Medium Density': 'RM'
 }
 
 utility_mapping = {
     'All Public Utilities': 'AllPub',
     'Electricity, Gas, and Water (Septic Tank)': 'NoSewr',
-    'Electricity and Gas Only': 'NoSeWa',
-    'Electricity Only': 'ELO'
 }
 
 landSlope_mapping = {
@@ -70,7 +65,6 @@ kitchenQual_mapping = {
     'Good': 'Gd',
     'Average': 'TA',
     'Fair': 'Fa',
-    'Poor': 'Po'
 }
 
 saleCondition_mapping = {
