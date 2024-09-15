@@ -79,13 +79,6 @@ with st.expander('Data'):
     summary = df.describe().T
     st.write(summary)
            
-    # Step 1: Identify non-numeric columns (optional, for understanding)
-    print(df.dtypes)
-
-    # Step 2: Select only numeric columns
-    numeric_df = df.select_dtypes(include=[float, int])
-
-    important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
 
     # Select more important columns
     numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Numeric columns only
@@ -224,6 +217,15 @@ input_data = pd.concat([input_df, df_filtered], axis=0)
 # encode = ['MSZoning','Utilities','LandSlope','BldgType','KitchenQual','SaleCondition']
 # input_data = pd.get_dummies(input_data, prefix=encode)
 
+# Step 1: Identify non-numeric columns (optional, for understanding)
+print(df.dtypes)
+
+# Step 2: Select only numeric columns
+numeric_df = df.select_dtypes(include=[float, int])
+
+important_num_cols = list(numeric_df.corr()["SalePrice"][(numeric_df.corr()["SalePrice"]>0.50) | (numeric_df.corr()["SalePrice"]<-0.50)].index)
+
+
 X = input_data.drop("SalePrice", axis=1)
 y = input_data["SalePrice"]
 X = pd.get_dummies(X, columns=cat_cols)
@@ -231,7 +233,7 @@ important_num_cols.remove("SalePrice")
 #Standardization of data
 scaler = StandardScaler()
 X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
-st.write(X.head())
+# st.write(X.head())
 # input_data[:1]  # Keep only the input row for prediction
 # st.write(input_data)
 
