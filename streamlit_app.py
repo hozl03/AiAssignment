@@ -530,16 +530,21 @@ X[important_num_cols] = scaler.fit_transform(X[important_num_cols])
 # Model selection and prediction
 model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
-# Making prediction
-if model_choice == 'Random Forest':
-    prediction = loaded_random_forest.predict(X[:1])
-elif model_choice == 'SVR':
-    prediction = loaded_svr.predict(X[:1])
-else:
-    prediction = loaded_lin_reg.predict(X[:1])
+# Prediction using different models
+st.write("## Prediction Results")
+if st.button('Predict'):
+    # Linear Regression prediction
+    lin_reg_pred = lin_reg.predict(input_data)
+    st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
-# Display Prediction
-st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
+    # Support Vector Regressor prediction
+    svr_pred = best_svr.predict(input_data)
+    st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+
+    # Random Forest Regressor prediction
+    random_forest_pred = random_forest.predict(input_data)
+    st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
+
 
 
 # input_df = pd.get_dummies(input_df, columns=cat_cols)
@@ -549,8 +554,6 @@ st.subheader(f'Predicted House Price: ${prediction[0]:,.2f}')
 # input_df = input_df.reindex(columns=df_filtered_drop.columns, fill_value=0)
 # input_df = input_df.fillna(0)  # Fill missing values
 
-# Model selection and prediction
-model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
 
 # # Making prediction
 # if model_choice == 'Random Forest':
