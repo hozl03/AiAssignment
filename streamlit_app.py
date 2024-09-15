@@ -81,7 +81,7 @@ saleCondition_mapping = {
 st.title('House Price Prediction')
 
 st.write('The Best Machine Learning App For House Price Prediction!')
-st.write("Develop by: Tay Keng Aik \t Cheong Wai Kian \t Ho Zhi Lin")
+st.write("Develop by: Tay Keng Aik,  Cheong Wai Kian, Ho Zhi Lin")
 # Load the data
 with st.expander('Data Set'):
     st.write('**Raw data**')
