@@ -287,8 +287,8 @@ with st.expander('Input Data'):
            st.write('Standardized Input Data')
            st.write(X[:1])
            
-           # Model selection and prediction
-           # model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
+# Model selection and prediction
+model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
            
            # Prediction using different models
 st.write("## Prediction Results")
