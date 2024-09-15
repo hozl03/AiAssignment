@@ -287,11 +287,13 @@ with st.expander('Input Data'):
            st.write('Standardized Input Data')
            st.write(X[:1])
            
-# Model selection and prediction
-model_choice = st.selectbox('Select Model', ['Random Forest', 'SVR', 'Linear Regression'])
            
-           # Prediction using different models
+# Prediction using different models
 st.write("## Prediction Results")
+
+# Allow the user to choose the model before pressing Predict
+model_choice = st.selectbox('Select Model', ['Random Forest', 'Support Vector Regression', 'Linear Regression'])
+
 if st.button('Predict'):
     # Check for missing inputs (NaN or None values)
     missing_values = input_df.isnull().sum()
@@ -301,17 +303,17 @@ if st.button('Predict'):
         st.error(f"Please fill out all the required fields. Missing values: {list(input_df.columns[missing_values > 0])}")
     else:
         # Proceed with prediction only if no values are missing
-        # Linear Regression prediction
-        lin_reg_pred = loaded_lin_reg.predict(X)
-        st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
+        if model_choice == 'Linear Regression':
+            lin_reg_pred = loaded_lin_reg.predict(X)
+            st.write(f"**Linear Regression Prediction: ${lin_reg_pred[0]:,.2f}**")
 
-        # Support Vector Regressor prediction
-        svr_pred = loaded_svr.predict(X)
-        st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
+        elif model_choice == 'Support Vector Regression':
+            svr_pred = loaded_svr.predict(X)
+            st.write(f"**SVR (GridSearch) Prediction: ${svr_pred[0]:,.2f}**")
 
-        # Random Forest Regressor prediction
-        random_forest_pred = loaded_random_forest.predict(X)
-        st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
+        elif model_choice == 'Random Forest':
+            random_forest_pred = loaded_random_forest.predict(X)
+            st.write(f"**Random Forest Prediction: ${random_forest_pred[0]:,.2f}**")
 
 
 
