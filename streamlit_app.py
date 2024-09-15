@@ -139,9 +139,9 @@ with st.expander('Data Visualization'):
 with st.sidebar:
 
     st.header('Input features')
-           
-    overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
-    st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
+    with st.expander('Overall Quality'):
+           overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
+           st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
     yearBuilt = st.number_input("Original construction date", value=None, placeholder="Enter a year")
     st.write("The original construction date is: ", yearBuilt)
