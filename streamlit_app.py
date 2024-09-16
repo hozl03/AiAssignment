@@ -145,7 +145,7 @@ with st.sidebar:
 
     with st.expander('Year Built'):
                yearBuilt = st.number_input("Original construction year", value=None, placeholder="Enter a year")
-               st.write("The original construction date is: ", yearBuilt)
+               st.write("The original construction year is: ", yearBuilt)
 
     with st.expander('Remodel Date'):
                yearRemodAdd = st.number_input("Remodel year", value=None, placeholder="Enter a year")
