@@ -140,16 +140,16 @@ with st.sidebar:
 
     st.header('Input features')
     with st.expander('Overall Quality'):
-               overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 5)
+               overallQuality = st.slider("Rates the overall material and finish of the house", 1, 10, 7)
                st.write("The overall material and finish of the house is : ", rating[overallQuality - 1])
 
     with st.expander('Year Built'):
-               yearBuilt = st.number_input("Original construction date", value=None, placeholder="Enter a year")
+               yearBuilt = st.number_input("Original construction year", value=None, placeholder="Enter a year")
                st.write("The original construction date is: ", yearBuilt)
 
     with st.expander('Remodel Date'):
-               yearRemodAdd = st.number_input("Remodel date", value=None, placeholder="Enter a year")
-               st.write("The remodel date date is: ", yearBuilt)
+               yearRemodAdd = st.number_input("Remodel year", value=None, placeholder="Enter a year")
+               st.write("The remodel year is: ", yearBuilt)
 
     with st.expander('Totale Basement Area'):
                totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
