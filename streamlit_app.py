@@ -168,8 +168,8 @@ with st.sidebar:
                st.write("Full bathrooms above grade is : ", fullBath)
 
     with st.expander('Total Rooms Above Grade'):
-    totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
-    st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
+               totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
+               st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
     with st.expander('Size of Garage'):
                garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
