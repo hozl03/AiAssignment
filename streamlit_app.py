@@ -151,13 +151,9 @@ with st.sidebar:
                yearRemodAdd = st.number_input("Remodel year", value=None, placeholder="Enter a year")
                st.write("The remodel year is: ", yearBuilt)
 
-    with st.expander('Totale Basement Area'):
+    with st.expander('Total Basement Area'):
                totalBasmtSF = st.number_input("Total square feet of basement area", value=None, placeholder="Enter the square feet")
                st.write("Total square feet of basement area is : ", totalBasmtSF, "sqft")
-
-    with st.expander('Total Rooms Above Grade'):
-               totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
-               st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
 
     with st.expander('First Floor Square Feet'):
                floorSF = st.number_input("First Floor square feet", value=None, placeholder="Enter the square feet")
@@ -171,7 +167,11 @@ with st.sidebar:
                fullBath = st.slider("Full bathrooms above grade", 0, 10, 5)
                st.write("Full bathrooms above grade is : ", fullBath)
 
-    with st.expander('Size of Garafe'):
+    with st.expander('Total Rooms Above Grade'):
+    totalRmsAbvGrd = st.slider("Total rooms above grade (does not include bathrooms)", 1, 20, 10)
+    st.write("Total rooms above grade (does not include bathrooms) is : ", totalRmsAbvGrd)
+
+    with st.expander('Size of Garage'):
                garageCars = st.slider("Size of garage in car capacity", 0, 10, 3)
                st.write("Size of garage in car capacity is : ", garageCars)
 
